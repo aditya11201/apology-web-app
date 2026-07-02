@@ -93,8 +93,12 @@ export const copy = {
 // PRD §7 names the final GIF `final-adit.gif`; the provided asset is
 // `mochi-peachcat-cute-cat.gif`. Treat the mochi GIF as the alias for
 // `final-adit.gif` until the owner drops in a true final GIF (DEP-04).
+//
+// Paths are prefixed with BASE_URL so they resolve correctly under the
+// GitHub Pages base path (/apologies-web-app/). RISK-04.
+const BASE = import.meta.env.BASE_URL // '/apologies-web-app/' in prod, '/' in some setups
 export const GIFS = {
-  opening: '/gifs/opening.gif',
-  overthinking: '/gifs/mr42aipu-midnightgif300.gif',
-  final: '/gifs/mochi-peachcat-cute-cat.gif',
+  opening: `${BASE}gifs/opening.gif`,
+  overthinking: `${BASE}gifs/mr42aipu-midnightgif300.gif`,
+  final: `${BASE}gifs/mochi-peachcat-cute-cat.gif`,
 }

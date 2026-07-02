@@ -1,8 +1,25 @@
+import ScrollProgress from './components/layout/ScrollProgress'
+import OpeningSection from './components/sections/OpeningSection'
+import ApologyChatSection from './components/sections/ApologyChatSection'
+import ReassuranceSection from './components/sections/ReassuranceSection'
+import OverthinkingSection from './components/sections/OverthinkingSection'
+import MadeForYouSection from './components/sections/MadeForYouSection'
+import MainQuestionSection from './components/sections/MainQuestionSection'
+
+// Apologies Web App — single-page vertical apology letter for Stasya.
+// Six sections in order, per PRD §6 + reference/index.html.
 export default function App() {
   return (
-    <div className="p-8 font-body">
-      <h1 className="font-head text-3xl text-btn">Apologies Web App — scaffolding OK</h1>
-      <p className="mt-2 text-text-soft">Token check: this heading should render in Baloo 2 + pink.</p>
-    </div>
+    <>
+      <ScrollProgress />
+      <main>
+        <OpeningSection />
+        <ApologyChatSection />
+        <ReassuranceSection />
+        <OverthinkingSection />
+        <MadeForYouSection />
+        <MainQuestionSection />
+      </main>
+    </>
   )
 }
