@@ -1,0 +1,126 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]: hal. 01
+    - generic:
+      - generic:
+        - img
+      - generic:
+        - img
+      - generic:
+        - img
+      - generic:
+        - img
+      - generic:
+        - img
+      - generic:
+        - img
+      - generic:
+        - img
+      - generic:
+        - img
+    - generic [ref=e7]:
+      - img [ref=e11]
+      - generic [ref=e14]: Untuk My very very very biutiful pro max plus Girl
+      - heading "Halo Perempuan yang di Jumat ini terlihat paling cantik di kantor bahkan di dunia" [level=1] [ref=e16]
+      - generic [ref=e18]: Stasya Annesty.
+      - paragraph [ref=e20]: Hmm… kamu masih marah ya?
+      - img "Adit lagi semangat nungguin kamu baca ini" [ref=e22]:
+        - img "Kucing strawberry-cat lucu lagi semangat" [ref=e23]
+      - button "Iya, lanjut baca dulu… →" [ref=e26] [cursor=pointer]:
+        - text: Iya, lanjut baca dulu…
+        - generic [ref=e27]: →
+  - generic [ref=e28]:
+    - generic [ref=e29]: hal. 02
+    - generic [ref=e32]:
+      - generic [ref=e33]: A
+      - generic [ref=e34]:
+        - text: Adit
+        - generic [ref=e35]: sedang mengetik…
+  - generic [ref=e37]:
+    - generic [ref=e38]: hal. 03
+    - generic [ref=e39]:
+      - generic [ref=e40]:
+        - heading "Aku nggak pernah keganggu sama kamu." [level=2] [ref=e41]
+        - paragraph [ref=e42]: Aku nggak kesel karena kamu banyak ngomong. Aku justru senang waktu kamu cerita, nanya hal random, atau nge-request apa pun ke aku.
+      - list [ref=e43]:
+        - listitem [ref=e44]:
+          - img [ref=e46]
+          - generic [ref=e49]:
+            - generic [ref=e50]: Kamu cerita
+            - generic [ref=e51]: Aku diem-diem senyum dengerin.
+        - listitem [ref=e52]:
+          - img [ref=e54]
+          - generic [ref=e57]:
+            - generic [ref=e58]: Kamu nanya random
+            - generic [ref=e59]: Pertanyaan paling ngalir pun aku suka.
+        - listitem [ref=e60]:
+          - img [ref=e62]
+          - generic [ref=e65]:
+            - generic [ref=e66]: Kamu request sesuatu
+            - generic [ref=e67]: Bikin aku merasa dibutuhin.
+        - listitem [ref=e68]:
+          - img [ref=e70]
+          - generic [ref=e73]:
+            - generic [ref=e74]: Aku merasa berguna
+            - generic [ref=e75]: Buat kamu, itu cukup buat aku.
+      - paragraph [ref=e77]: Plisssss bangetttt janjiiii jangan berubah aku pengen kamu kaya kemarin aku seneng bangetttt kalo di gituinnnnn
+  - generic [ref=e78]:
+    - generic [ref=e79]: hal. 04
+    - generic [ref=e81]:
+      - img [ref=e83]
+      - heading "Dari semalam aku kepikiran terus sampai susah tidur, hehe." [level=2] [ref=e86]
+      - paragraph [ref=e88]: Iya, aku overthinking sendiri karena takut kamu masih marah sama aku. Terus akhirnya aku bikin ini deh.
+      - generic [ref=e89]:
+        - generic [ref=e90]: Dia masih marah nggak ya?
+        - generic [ref=e91]: Aduh aku salah…
+        - generic [ref=e92]: Gimana cara minta maaf yang lucu ya?
+        - generic [ref=e93]: Bikin ini aja deh…
+      - img "Adit belum bisa tidur, overthinking soal kamu" [ref=e136]:
+        - img "Kucing midnight lagi begadang overthinking belum tidur" [ref=e137]
+      - button "Lihat hasil overthinking-ku →" [ref=e96] [cursor=pointer]:
+        - text: Lihat hasil overthinking-ku
+        - generic [ref=e97]: →
+  - generic [ref=e98]:
+    - generic [ref=e99]: hal. 05
+    - generic [ref=e101]:
+      - heading "Aku bikin ini khusus buat kamu." [level=2] [ref=e103]
+      - paragraph [ref=e105]: Aku harap hal kecil ini bisa bikin marah kamu sedikit reda, bikin kamu senyum lagi, dan bikin kamu mau maafin aku.
+      - generic [ref=e107]:
+        - generic [ref=e112]: Apology loading…
+        - generic [ref=e115]: 0%
+        - generic [ref=e116]: menyiapkan permintaan maaf…
+  - generic [ref=e117]:
+    - generic [ref=e118]: hal. 06 ♡
+    - generic:
+      - generic:
+        - img
+      - generic:
+        - img
+      - generic:
+        - img
+      - generic:
+        - img
+      - generic:
+        - img
+      - generic:
+        - img
+      - generic:
+        - img
+      - generic:
+        - img
+      - generic:
+        - img
+      - generic:
+        - img
+    - generic [ref=e121]:
+      - heading "Jadi… Mau ya?" [level=2] [ref=e122]:
+        - text: Jadi…
+        - text: Mau ya?
+      - generic [ref=e123]: Maafin Aditya Ardiansyah Ramadhan ini.
+      - img [ref=e127]
+      - generic [ref=e130]:
+        - button "Iya deh, aku maafin kamu. Tapi jangan ngelakuin hal itu lagi ya ke aku." [ref=e131] [cursor=pointer]:
+          - text: Iya deh, aku maafin kamu.
+          - text: Tapi jangan ngelakuin hal itu lagi ya ke aku.
+        - button "Nggak mau, aku mau ngambek seminggu lagi." [ref=e133]:
+          - generic [ref=e134]: Nggak mau, aku mau ngambek seminggu lagi.
