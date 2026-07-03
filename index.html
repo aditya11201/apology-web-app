@@ -1,20 +1,62 @@
 <!doctype html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#FFF1F5" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&family=Patrick+Hand&display=swap"
-      rel="stylesheet"
-    />
-    <title>Untuk Kakak Cantik — Stasya Annesty</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#FFF1F5" />
+<title>Untuk Kakak Cantik — Stasya Annesty</title>
+
+<!-- Google Fonts: Baloo 2 (head), Nunito (body), Patrick Hand (hand) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet" />
+
+<!-- Tailwind Play CDN — zero build step, utility classes in the browser -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bg:        '#FFF7F0',
+          'bg-pink': '#FFF1F5',
+          primary:   '#FF8FAB',
+          secondary: '#B388EB',
+          text:      '#3A2E39',
+          accent:    '#FFD6E0',
+          btn:       '#FF5C8A',
+          'btn-press':'#E8477A',
+          card:      '#FFFFFF',
+          'text-soft':'#6E5C6B',
+          line:      '#F2DDE3',
+          star:      '#FFE7B0',
+        },
+        fontFamily: {
+          head: ['"Baloo 2"', 'Trebuchet MS', 'system-ui', 'sans-serif'],
+          body: ['Nunito', 'system-ui', '-apple-system', 'sans-serif'],
+          hand: ['"Patrick Hand"', '"Comic Sans MS"', 'cursive'],
+        },
+        borderRadius: { xl: '30px', lg: '22px', md: '14px' },
+      },
+    },
+  }
+</script>
+
+<!-- Residual CSS: keyframes, pseudo-elements, SVG transitions, JS-coupled state classes.
+     These CANNOT be expressed as Tailwind utilities and must stay here. -->
+<style>
+/* placeholder — filled in Task 3 */
+</style>
+</head>
+<body class="font-body text-text bg-bg" style="line-height:1.6; font-size:clamp(16px, 1.05vw + 13px, 18px); overflow-x:hidden; -webkit-font-smoothing:antialiased;">
+<!-- scroll progress bar -->
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<!-- sections filled in Tasks 4–9 -->
+
+<!-- confetti layer -->
+<div id="confetti-layer" aria-hidden="true"></div>
+
+<!-- script filled in Task 10 -->
+</body>
 </html>
