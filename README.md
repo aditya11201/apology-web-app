@@ -1,56 +1,39 @@
 # Apologies Web App
 
-An interactive single-page apology letter built with **React + Vite**, styled with **Tailwind CSS v4**, and animated with **Framer Motion**. Deployable as a static site on GitHub Pages.
+An interactive single-page apology letter built with **plain HTML, Tailwind CSS (Play CDN), and vanilla JavaScript**. No build step, no framework, no `npm install`.
 
-## Stack
+## How to run
 
-- **React 19** + **Vite** — SPA scaffold
-- **Tailwind CSS v4** — styling via `@theme` design tokens
-- **Framer Motion** — scroll reveal, chat sequencing, the forgiveness climax
-- **Vitest** — unit tests for the runaway-button geometry + state machine
-
-## Getting started
+Just open `index.html` in a browser:
 
 ```bash
-npm install
-npm run dev      # local dev server
-npm run build    # production build to dist/
-npm run preview  # preview the production build
-npm test         # run unit tests
+open index.html
 ```
+
+That's it. No server required (GIFs and fonts load from local files / Google Fonts CDN).
+
+## Tech stack
+
+- **HTML5** — single `index.html` file with all markup
+- **Tailwind CSS v3** — via [Play CDN](https://tailwindcss.com/docs/installation/play-cdn), configured inline in `<head>`
+- **Vanilla JavaScript** — all interactions (no React, no jQuery)
+- **Google Fonts** — Baloo 2 (headings), Nunito (body), Patrick Hand (handwritten)
 
 ## Structure
 
 ```
-src/
-├─ data/copy.js          # all Indonesian copy + GIF paths (single source)
-├─ lib/                  # geometry, motion variants, scroll, svg helpers
-├─ hooks/                # useReducedMotion, useRunaway
-├─ components/
-│  ├─ layout/            # SectionWrapper, PageTab, Reveal, ScrollProgress
-│  ├─ decorative/        # FloatingHearts, StarsLayer, ConfettiHearts
-│  ├─ sections/          # the six sections + final state
-│  └─ interactions/      # RunawayButton (ngambek button + balloon pop)
-└─ tests/                # geometry + runaway state machine tests
+├── index.html                    ← the entire app (HTML + Tailwind + CSS + JS)
+├── opening.gif                   ← Section 1 greeting GIF
+├── mr42aipu-midnightgif300.gif   ← Section 4 overthinking GIF
+├── mochi-peachcat-cute-cat.gif   ← Final state "Kondisi Adit saat ini" GIF
+├── PRD.md                        ← functional specification
+└── README.md
 ```
 
 ## Deployment
 
-The app is configured for GitHub Pages project-page deployment with `base: '/apologies-web-app/'` in `vite.config.js`. Pushing to `main` triggers the GitHub Actions workflow (`.github/workflows/deploy.yml`) which builds and deploys automatically.
+Push to GitHub and enable GitHub Pages (Settings → Pages → deploy from `main` branch root). Since there's no build step, Pages serves `index.html` directly. No base path configuration needed — relative GIF paths work at any URL.
 
-After enabling, the app will be live at:
+## Replacing GIFs
 
-```
-https://<username>.github.io/apologies-web-app/
-```
-
-> **Note:** if the repository name differs from `apologies-web-app`, update the `base` path in `vite.config.js` accordingly (RISK-04).
-
-## GIF assets
-
-Local GIFs live in `public/gifs/`. To replace a GIF, drop the new file in and update the path in `src/data/copy.js` (`GIFS` map). The PRD references `final-adit.gif` as the final-state GIF; the provided asset is `mochi-peachcat-cute-cat.gif` (treated as its alias until replaced — DEP-04).
-
-## Reference
-
-- `reference/index.html` — the original single-file mockup; the UI/UX source of truth.
-- `PRD.md` — the functional specification; the requirements source of truth.
+Drop the new GIF file in the project root and update the `src="..."` attribute in `index.html`. The three GIFs are referenced by bare filename (e.g. `src="opening.gif"`).
