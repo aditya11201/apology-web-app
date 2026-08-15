@@ -4,303 +4,19 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#FFF1F5" />
-<title>Untuk Kakak Cantik — Stasya Annesty</title>
+<title>Untuk Kakak Cantik — Sassy</title>
 
-<!-- Google Fonts: Baloo 2 (head), Nunito (body), Patrick Hand (hand) -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet" />
+<!-- Self-hosted local fonts are declared in assets/styles.css. -->
 
-<!-- Tailwind Play CDN — zero build step, utility classes in the browser -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          bg:        '#FFF7F0',
-          'bg-pink': '#FFF1F5',
-          primary:   '#FF8FAB',
-          secondary: '#B388EB',
-          text:      '#3A2E39',
-          accent:    '#FFD6E0',
-          btn:       '#FF5C8A',
-          'btn-press':'#E8477A',
-          card:      '#FFFFFF',
-          'text-soft':'#6E5C6B',
-          line:      '#F2DDE3',
-          star:      '#FFE7B0',
-        },
-        fontFamily: {
-          head: ['"Baloo 2"', 'Trebuchet MS', 'system-ui', 'sans-serif'],
-          body: ['Nunito', 'system-ui', '-apple-system', 'sans-serif'],
-          hand: ['"Patrick Hand"', '"Comic Sans MS"', 'cursive'],
-        },
-        borderRadius: { xl: '30px', lg: '22px', md: '14px' },
-      },
-    },
-  }
-</script>
+<link rel="stylesheet" href="assets/styles.css" />
+<script src="assets/app.js" defer></script>
 
-<!-- Residual CSS: keyframes, pseudo-elements, SVG transitions, JS-coupled state classes.
-     These CANNOT be expressed as Tailwind utilities and must stay here. -->
-<style>
-/* ============================================================
-   Residual CSS — keyframes, JS-coupled state classes, pseudo-elements.
-   Transcribed from reference/index.html. Tailwind utilities handle
-   layout/spacing/colors/typography; this block holds what they can't.
-   ============================================================ */
-
-/* -- base helpers kept as CSS vars (some inline styles reference these) -- */
-:root{
-  --primary:   #FF8FAB;
-  --secondary: #B388EB;
-  --text:      #3A2E39;
-  --text-soft: #6E5C6B;
-  --line:      #F2DDE3;
-  --btn:       #FF5C8A;
-  --btn-press: #E8477A;
-  --accent:    #FFD6E0;
-  --star:      #FFE7B0;
-  --night-1:   #241638;
-  --night-2:   #140C24;
-  --night-3:   #0C0818;
-  --bg:        #FFF7F0;
-  --bg-pink:   #FFF1F5;
-  --shadow-soft: 0 24px 60px -28px rgba(179,136,235,.45);
-  --shadow-card: 0 30px 70px -34px rgba(255,92,138,.40);
-  --r-lg: 30px; --r-md: 22px; --r-sm: 14px;
-  --ease: cubic-bezier(0.22,1,0.36,1);
-}
-
-/* -- scroll progress bar -- */
-#scroll-progress{
-  position:fixed; top:0; left:0; height:3px; width:100%;
-  transform: scaleX(0); transform-origin:0 50%;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  box-shadow: 0 0 8px rgba(179,136,235,.45);
-  z-index:80; pointer-events:none;
-}
-
-/* -- reveal-on-scroll (JS toggles .in) -- */
-.reveal{ opacity:0; transform: translateY(26px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
-.reveal.in{ opacity:1; transform:none; }
-.reveal.d1{ transition-delay:.08s; } .reveal.d2{ transition-delay:.16s; }
-.reveal.d3{ transition-delay:.24s; } .reveal.d4{ transition-delay:.32s; }
-
-/* -- floating hearts (ambient, s1 + s6) -- */
-.hearts-layer{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
-.heart-float{ position:absolute; bottom:-40px; width:18px; height:18px; opacity:0; animation: floatUp linear infinite; }
-.heart-float svg{ width:100%; height:100%; display:block; }
-@keyframes floatUp{
-  0%{ transform: translateY(0) rotate(0deg) scale(.7); opacity:0; }
-  10%{ opacity:.55; }
-  90%{ opacity:.45; }
-  100%{ transform: translateY(-110vh) rotate(40deg) scale(1); opacity:0; }
-}
-
-/* -- scroll-hint -- */
-.scroll-hint{
-  position:absolute; bottom: 22px; left:50%; transform: translateX(-50%);
-  font-family: 'Patrick Hand', cursive; color: var(--text-soft); font-size: 15px;
-  display:flex; flex-direction:column; align-items:center; gap:6px; opacity:.8;
-}
-.scroll-hint .mouse{ width:22px; height:34px; border:2px solid var(--text-soft); border-radius: 12px; position:relative; }
-.scroll-hint .mouse::after{ content:""; position:absolute; left:50%; top:7px; width:3px; height:7px; background:var(--text-soft); border-radius:2px; transform:translateX(-50%); animation: wheeldown 1.6s infinite; }
-@keyframes wheeldown{ 0%{opacity:0;transform:translate(-50%,0)} 30%{opacity:1} 100%{opacity:0;transform:translate(-50%,9px)} }
-
-/* -- CTA button hover (needs :hover pseudo, kept as CSS) -- */
-.cta:hover{ background: var(--btn-press); transform: translateY(-2px); box-shadow: 0 22px 40px -16px rgba(255,92,138,.9); }
-.cta:active{ transform: translateY(1px) scale(.98); }
-.cta .arr{ transition: transform .25s var(--ease); }
-.cta:hover .arr{ transform: translateX(4px); }
-
-/* -- focus rings (WCAG 2.4.7) -- */
-.cta:focus-visible{ outline:none; box-shadow:0 0 0 4px rgba(179,136,235,.42), 0 18px 34px -16px rgba(255,92,138,.85); }
-.btn-primary:focus-visible{ outline:none; box-shadow:0 0 0 4px rgba(179,136,235,.45), 0 20px 36px -16px rgba(255,92,138,.9); }
-.ngambek-wrap:focus-visible .ngambek-face{ outline:none; box-shadow:0 0 0 4px rgba(179,136,235,.45); border-color: var(--secondary); }
-
-/* -- primary button hover -- */
-.btn-primary:hover{ background: var(--btn-press); transform: translateY(-2px); box-shadow: 0 26px 44px -16px rgba(255,92,138,1); }
-.btn-primary:active{ transform: translateY(2px) scale(.985); }
-
-/* -- scene drop-zones (kept as CSS — used by multiple sections) -- */
-.scene{
-  position:relative; margin:24px auto 0; width:100%; max-width:300px; aspect-ratio:4/3;
-  border-radius:var(--r-md); overflow:hidden;
-  background:radial-gradient(120% 80% at 50% 25%, #ffffff 0%, #fff3f8 100%);
-  box-shadow:inset 0 0 0 1.5px var(--line), 0 18px 40px -30px rgba(255,92,138,.55);
-  display:grid; place-items:center;
-}
-.scene::before{
-  content:""; position:absolute; inset:9px; border-radius:calc(var(--r-md) - 7px);
-  border:1.5px dashed color-mix(in srgb, var(--primary) 42%, transparent); pointer-events:none;
-}
-.scene-art{ width:60%; position:relative; z-index:1; }
-.scene-art svg{ width:100%; height:auto; display:block; }
-.scene-cap{
-  position:absolute; left:0; right:0; bottom:7px; z-index:2;
-  font-family:'Patrick Hand',cursive; font-size:13px; color:var(--text-soft); text-align:center;
-}
-.scene--lg{ max-width:340px; aspect-ratio:1/1; }
-.scene--media{ aspect-ratio:auto; }
-.scene--media::before{ content:none; }
-.scene-img{ display:block; width:100%; height:auto; border-radius:var(--r-md); }
-
-/* -- pagetab variants -- */
-.pagetab--night{ background:rgba(255,255,255,.16); color:#FFE7B0; }
-.pagetab--pink{ background:var(--btn); color:var(--text); }
-
-/* -- SECTION 2: chat -- */
-.bubble{
-  align-self:flex-start; background: var(--bg-pink); color: var(--text);
-  padding: 13px 17px; border-radius: 20px 20px 20px 5px; max-width: 84%;
-  font-size: clamp(16px, 2.2vw, 18px);
-  box-shadow: 0 8px 18px -14px rgba(58,46,57,.4);
-  opacity:0; transform: translateY(10px) scale(.96);
-  animation: bubbleIn .5s var(--ease) forwards;
-}
-.bubble.lost{ background:#FFE7C2; font-style:italic; }
-@keyframes bubbleIn{ to{ opacity:1; transform:none; } }
-.sorry{
-  font-family: 'Patrick Hand', cursive; font-size: clamp(26px, 5vw, 38px); color: var(--btn);
-  text-align:center; margin-top: 16px; opacity:0; transform: scale(.8);
-  animation: bubbleIn .6s var(--ease) forwards;
-}
-.typing{ align-self:flex-start; display:inline-flex; gap:5px; background: var(--bg-pink); padding:14px 18px; border-radius: 20px 20px 20px 5px; }
-.typing i{ width:8px;height:8px;border-radius:50%;background:var(--primary); display:inline-block; animation: blink 1.2s infinite; }
-.typing i:nth-child(2){ animation-delay:.2s } .typing i:nth-child(3){ animation-delay:.4s }
-@keyframes blink{ 0%,60%,100%{ transform: translateY(0); opacity:.4 } 30%{ transform: translateY(-5px); opacity:1 } }
-
-/* -- SECTION 3: tick check-off (SVG stroke animation) -- */
-.tick-ring{
-  fill:rgba(255,255,255,.6); stroke:var(--secondary); stroke-width:2;
-  transform-box:fill-box; transform-origin:center;
-  transition:fill .4s var(--ease), stroke .4s var(--ease), transform .45s var(--ease);
-}
-.tick-mark{
-  fill:none; stroke:#fff; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round;
-  stroke-dasharray:1; stroke-dashoffset:1;
-  transition:stroke-dashoffset .45s var(--ease) .2s;
-}
-.reveal.in .tick-ring{ fill:var(--btn); stroke:var(--btn); transform:scale(1.06); }
-.reveal.in .tick-mark{ stroke-dashoffset:0; }
-
-/* -- SECTION 4: night stars -- */
-.star{ position:absolute; width:3px; height:3px; background: var(--star); border-radius:50%; box-shadow:0 0 6px var(--star); animation: twinkle 3s infinite var(--ease); }
-.star.big{ width:5px; height:5px; }
-@keyframes twinkle{ 0%,100%{ opacity:.2; transform:scale(.7) } 50%{ opacity:1; transform:scale(1.15) } }
-
-/* -- SECTION 4: thought bubbles -- */
-.thought{
-  position:relative; background: rgba(255,255,255,.94); color: var(--text);
-  padding: 13px 22px; border-radius: 24px; max-width: 80%; font-size: clamp(15px,2.2vw,17px);
-  box-shadow: 0 14px 30px -18px rgba(0,0,0,.6);
-  opacity:0; transform: translateY(12px); transition: opacity .6s var(--ease), transform .6s var(--ease);
-}
-.thought.in{ opacity:1; transform:none; }
-.thought::after{ content:""; position:absolute; bottom:-7px; left:24px; width:12px; height:12px; background:inherit; border-radius:50%; box-shadow:18px 6px 0 -1px rgba(255,255,255,.7), 30px 12px 0 -3px rgba(255,255,255,.5); }
-.thought:nth-child(even){ align-self:flex-end; }
-.thought:nth-child(even)::after{ left:auto; right:24px; box-shadow:-18px 6px 0 -1px rgba(255,255,255,.7), -30px 12px 0 -3px rgba(255,255,255,.5); }
-
-/* -- SECTION 5: loading bar -- */
-.progress{ height:14px; background: rgba(255,255,255,.12); border-radius:999px; overflow:hidden; margin:10px 0; }
-.progress > i{ display:block; height:100%; width:0; background: linear-gradient(90deg, var(--primary), var(--secondary)); border-radius:999px; transition: width .18s linear; }
-.done-tag{ display:none; align-items:center; gap:8px; color:#8EE6A8; font-family:'Baloo 2',sans-serif; font-weight:700; margin-top:10px; }
-.done-tag.show{ display:inline-flex; animation: bubbleIn .5s var(--ease) forwards; }
-
-/* -- SECTION 6: runaway button + balloon pop -- */
-.roam{ position:relative; width:100%; min-height: clamp(168px, 26vh, 240px); }
-.ngambek-wrap{
-  position:absolute; left:50%; top:0; transform: translateX(-50%);
-  border:none; background:transparent; padding:0; cursor:pointer;
-  transition: transform .42s cubic-bezier(.16,1,.3,1);
-  z-index:3;
-}
-.ngambek-face{
-  display:inline-flex; align-items:center; justify-content:center;
-  background:#fff; color: var(--text); border:2px solid var(--line);
-  font-family: 'Baloo 2',sans-serif; font-weight:600; font-size: clamp(14px,2vw,16px);
-  padding: 12px 20px; border-radius: 14px; max-width: 86vw; text-align:center;
-  transition: background .3s var(--ease), color .3s var(--ease), border-color .3s, box-shadow .2s var(--ease), transform .12s var(--ease);
-}
-.ngambek-wrap:hover .ngambek-face{ border-color: var(--primary); }
-.ngambek-wrap:active .ngambek-face{ transform: scale(.97); }
-.ngambek-face.popping{
-  position:relative;
-  background: radial-gradient(circle at 30% 25%, #FFCADB, var(--btn) 64%);
-  color:#fff; border:none;
-  border-radius: 48% 48% 50% 50% / 44% 44% 58% 58%;
-  box-shadow: inset -5px -7px 12px rgba(150,20,60,.12), inset 4px 5px 10px rgba(255,255,255,.45), 0 12px 22px -12px rgba(255,92,138,.7);
-  animation: balloonInflate .9s var(--ease) forwards;
-}
-.ngambek-face.popping::after{
-  content:""; position:absolute; left:50%; bottom:-6px; width:14px; height:9px;
-  background: var(--btn); transform: translateX(-50%);
-  border-radius: 2px 2px 50% 50%;
-  box-shadow: inset -2px -1px 3px rgba(150,20,60,.18);
-}
-@keyframes balloonInflate{
-  0%   { transform: scale(1)    rotate(0); }
-  40%  { transform: scale(1.20) rotate(-2deg); }
-  65%  { transform: scale(1.45) rotate(2deg); }
-  82%  { transform: scale(1.62) rotate(-1.5deg); }
-  100% { transform: scale(1.82) rotate(0); }
-}
-.funny{
-  position:absolute; left:50%; top:50%; transform: translate(-50%,-40%) scale(.9);
-  width: 86%; background:#fff; color: var(--text);
-  padding: 16px 20px; border-radius: var(--r-md);
-  box-shadow: var(--shadow-card); font-family:'Patrick Hand', cursive;
-  font-size: clamp(16px,2.4vw,20px); text-align:center;
-  opacity:0; pointer-events:none; transition: opacity .4s var(--ease), transform .4s var(--ease);
-}
-.funny.show{ opacity:1; transform: translate(-50%,-50%) scale(1); }
-
-/* -- SECTION 6: final state -- */
-.final{ display:none; text-align:center; }
-.final.show{ display:block; animation: bubbleIn .7s var(--ease) forwards; }
-
-/* -- confetti -- */
-#confetti-layer{ position:fixed; inset:0; pointer-events:none; z-index:60; overflow:hidden; }
-.confetti-heart{ position:absolute; top:-6%; will-change: transform; animation: confettiFall linear forwards; }
-.confetti-heart svg{ width:100%; height:100%; display:block; }
-@keyframes confettiFall{
-  0%{ transform: translate(0,0) rotate(0); opacity:1; }
-  100%{ transform: translate(var(--dx), 108vh) rotate(var(--rot)); opacity:.9; }
-}
-
-/* -- burst particles (balloon pop) -- */
-.pop-flash{ position:fixed; width:34px; height:34px; border-radius:50%; pointer-events:none; transform: translate(-50%,-50%) scale(.2);
-  background: radial-gradient(circle, rgba(255,255,255,.95), rgba(255,143,171,.55) 58%, transparent 72%);
-  animation: popFlash .36s var(--ease) forwards; }
-@keyframes popFlash{ 0%{ transform: translate(-50%,-50%) scale(.2); opacity:.9 } 60%{ opacity:.6 } 100%{ transform: translate(-50%,-50%) scale(3.6); opacity:0 } }
-.shard{ position:fixed; width:17px; height:17px; pointer-events:none; transform: translate(-50%,-50%) scale(.5);
-  animation: shardFly .8s cubic-bezier(.18,.7,.3,1) forwards; }
-.shard svg{ width:100%; height:100%; display:block; filter: drop-shadow(0 1px 1px rgba(0,0,0,.12)); }
-@keyframes shardFly{
-  0%  { transform: translate(-50%,-50%) scale(.5) rotate(0); opacity:1; }
-  70% { opacity:1; }
-  100%{ transform: translate(calc(-50% + var(--bx)), calc(-50% + var(--by) + 80px)) scale(1) rotate(var(--rot)); opacity:0; }
-}
-
-/* -- responsive -- */
-@media (max-width: 560px){
-  .bubble{ max-width: 92%; }
-}
-
-/* -- motion safety -- */
-@media (prefers-reduced-motion: reduce){
-  *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.05ms !important; }
-  html{ scroll-behavior:auto; }
-  .reveal{ opacity:1; transform:none; }
-}
-</style>
 </head>
 <body class="font-body text-text bg-bg" style="line-height:1.6; font-size:clamp(16px, 1.05vw + 13px, 18px); overflow-x:hidden; -webkit-font-smoothing:antialiased;">
 <!-- scroll progress bar -->
 <div id="scroll-progress" aria-hidden="true"></div>
 
+<main id="content">
 <!-- ===================== SECTION 1 ===================== -->
 <section id="s1" class="relative min-h-[100dvh] flex items-center justify-center overflow-hidden"
   style="background:
@@ -319,17 +35,17 @@
       </div>
       <div class="eyebrow reveal d1 font-hand" style="font-size:clamp(15px,1.9vw,21px); color:var(--btn); letter-spacing:.5px;">Untuk My very very very biutiful pro max plus Girl</div>
       <h1 class="reveal d1 font-head font-extrabold mt-2" style="font-size:clamp(24px,4.4vw,40px); line-height:1.05; letter-spacing:-.02em;">Halo Perempuan yang di Jumat ini terlihat paling cantik di kantor bahkan di dunia</h1>
-      <div class="who reveal d2 font-hand mt-1.5" style="font-size:clamp(22px,4vw,32px); line-height:1.1;">Stasya Annesty.</div>
+      <div class="who reveal d2 font-hand mt-1.5" style="font-size:clamp(22px,4vw,32px); line-height:1.1;">Sassy.</div>
       <p class="ask reveal d3 font-hand mt-2.5" style="font-size:clamp(15px,1.9vw,21px); color:var(--text-soft);">Hmm… kamu masih marah ya?</p>
 
-      <div class="scene scene--media reveal d3 mx-auto mt-3.5" role="img" aria-label="Adit lagi semangat nungguin kamu baca ini"
-        style="background:transparent; box-shadow:none;">
-        <img class="scene-img" src="opening.gif" alt="Kucing strawberry-cat lucu lagi semangat" loading="lazy"
-          style="border-radius:var(--r-md); box-shadow:0 18px 40px -28px rgba(255,92,138,.45); max-height:34vh; width:auto; max-width:100%;" />
-      </div>
+        <div class="scene scene--media reveal d3 mx-auto mt-3.5"
+          style="background:transparent; box-shadow:none;">
+         <img class="scene-img" src="assets/gifs/opening.gif" alt="Kucing strawberry-cat lucu lagi semangat" loading="eager" width="284" height="500"
+           style="border-radius:var(--r-md); box-shadow:0 18px 40px -28px rgba(255,92,138,.45); max-height:34vh; width:auto; max-width:100%; aspect-ratio:284 / 500;" />
+       </div>
 
       <div class="reveal d4" style="margin-top:26px;">
-        <button class="cta inline-flex items-center gap-2.5 rounded-full border-none px-7 py-4 font-head font-bold text-white"
+        <button type="button" class="cta inline-flex items-center gap-2.5 rounded-full border-none px-7 py-4 font-head font-bold text-white"
           data-scroll="#s2"
           style="font-size:clamp(17px,2.4vw,20px); background:var(--btn); box-shadow:0 18px 34px -16px rgba(255,92,138,.85); cursor:pointer; transition:transform .18s var(--ease), box-shadow .25s, background .2s;">
           Iya, lanjut baca dulu… <span class="arr">→</span>
@@ -349,13 +65,13 @@
       style="background:#fff; border-radius:var(--r-lg); box-shadow:var(--shadow-soft); padding:clamp(22px,4vw,34px); border:1px solid #fff;">
       <div class="chat-head mb-[18px] flex items-center gap-3 border-b pb-4" style="border-color:var(--line);">
         <div class="ava grid h-11 w-11 place-items-center rounded-full font-head font-extrabold text-white"
-          style="background: linear-gradient(135deg, var(--primary), var(--secondary));">A</div>
+          style="background: linear-gradient(135deg, var(--primary), var(--secondary));">user</div>
         <div>
-          <b class="font-head text-lg">Adit</b>
+           <b class="font-head text-lg">user</b>
           <span class="block text-[13px]" style="color:var(--text-soft);">sedang mengetik…</span>
         </div>
       </div>
-      <div class="chat-stage flex min-h-[40px] flex-col gap-3" id="chatStage"></div>
+       <div class="chat-stage flex min-h-[40px] flex-col gap-3" id="chatStage" aria-live="polite"></div>
     </div>
   </div>
 </section>
@@ -423,13 +139,13 @@ Terus akhirnya aku bikin ini deh.</p>
         <div class="thought">Aduh aku salah…</div>
         <div class="thought">Gimana cara minta maaf yang lucu ya?</div>
         <div class="thought">Bikin ini aja deh…</div>
-      </div>
-      <div class="scene scene--media reveal d3 mx-auto mt-3.5" role="img" aria-label="Adit belum bisa tidur, overthinking soal kamu">
-        <img class="scene-img" src="mr42aipu-midnightgif300.gif" alt="Kucing midnight lagi begadang overthinking belum tidur" loading="lazy"
-          style="border-radius:var(--r-md); box-shadow:0 18px 40px -26px rgba(0,0,0,.6);" />
-      </div>
+        </div>
+        <div class="scene scene--media reveal d3 mx-auto mt-3.5">
+          <img class="scene-img" src="assets/gifs/mr42aipu-midnightgif300.gif" alt="Kucing midnight lagi begadang overthinking belum tidur" loading="lazy" width="250" height="188"
+            style="border-radius:var(--r-md); box-shadow:0 18px 40px -26px rgba(0,0,0,.6);" />
+        </div>
       <div class="reveal d4" style="margin-top:30px;">
-        <button class="cta inline-flex items-center gap-2.5 rounded-full border-none px-7 py-4 font-head font-bold text-white"
+         <button type="button" class="cta inline-flex items-center gap-2.5 rounded-full border-none px-7 py-4 font-head font-bold text-white"
           data-scroll="#s5"
           style="font-size:clamp(17px,2.4vw,20px); background:var(--btn); box-shadow:0 18px 34px -16px rgba(255,92,138,.85); cursor:pointer; transition:transform .18s var(--ease), box-shadow .25s, background .2s;">
           Lihat hasil overthinking-ku <span class="arr">→</span>
@@ -460,7 +176,7 @@ Terus akhirnya aku bikin ini deh.</p>
           <div class="progress-row flex justify-between" style="font-family:'Patrick Hand',cursive; font-size:15px; color:#CBB9EC;">
             <span></span><span id="progressPct">0%</span>
           </div>
-          <div class="status" id="progressStatus" style="font-family:'Patrick Hand',cursive; color:#FFE7B0; font-size:16px; margin-top:8px; min-height:22px;">menyiapkan permintaan maaf…</div>
+           <div class="status" id="progressStatus" aria-live="polite" style="font-family:'Patrick Hand',cursive; color:#FFE7B0; font-size:16px; margin-top:8px; min-height:22px;">menyiapkan permintaan maaf…</div>
           <span class="done-tag" id="doneTag">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg>
             done
@@ -486,7 +202,7 @@ Terus akhirnya aku bikin ini deh.</p>
       <!-- question state -->
       <div class="q-state reveal" id="qState">
         <h2 class="font-head font-extrabold" style="font-size:clamp(34px,7vw,54px); line-height:1.04; letter-spacing:-.02em;">Jadi…<br>Mau ya?</h2>
-        <div class="font-hand mt-3.5" style="font-size:clamp(22px,3.4vw,28px); color:var(--text);">Maafin Aditya Ardiansyah Ramadhan ini.</div>
+        <div class="font-hand mt-3.5" style="font-size:clamp(22px,3.4vw,28px); color:var(--text);">Maafin user ini.</div>
         <div class="q-flourish my-[22px] flex items-center justify-center gap-2.5" style="color:var(--btn);" aria-hidden="true">
           <span style="width:44px; height:2px; border-radius:2px; background:linear-gradient(90deg,transparent,rgba(255,92,138,.65),transparent);"></span>
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 21s-7.5-4.9-10-9.3C.4 8.4 2 5 5.2 5c2 0 3.3 1.1 4 2.2.7-1.1 2-2.2 4-2.2 3.2 0 4.8 3.4 3.2 6.7C19 16.1 12 21 12 21z"/></svg>
@@ -494,7 +210,7 @@ Terus akhirnya aku bikin ini deh.</p>
         </div>
 
         <div class="btn-area mt-7 flex flex-col items-center gap-[18px]">
-          <button class="btn-primary w-full cursor-pointer" id="forgiveBtn"
+           <button type="button" class="btn-primary w-full cursor-pointer" id="forgiveBtn"
             style="max-width:420px; background:var(--btn); color:#fff; border:2px solid rgba(255,255,255,.92); font-family:'Baloo 2',sans-serif; font-weight:700; font-size:clamp(16px,2.3vw,19px); line-height:1.35; padding:17px 24px; border-radius:18px; box-shadow:0 20px 36px -16px rgba(255,92,138,.9); transition:transform .18s var(--ease), box-shadow .25s, background .2s;">
             Iya deh, aku maafin kamu.<br>Tapi jangan ngelakuin hal itu lagi ya ke aku.
           </button>
@@ -503,338 +219,34 @@ Terus akhirnya aku bikin ini deh.</p>
             <button class="ngambek-wrap" id="ngambekBtn" type="button">
               <span class="ngambek-face" id="ngambekFace">Nggak mau, aku mau ngambek seminggu lagi.</span>
             </button>
-            <div class="funny" id="funnyMsg">Eh, balon ngambek-nya pecah! Waktu ngambek-nya kelihatannya udah abis deh… yuk, maafin aku?</div>
+            <div class="funny" id="funnyMsg" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></div>
           </div>
         </div>
       </div>
 
       <!-- final state -->
-      <div class="final" id="finalState">
-        <h2 class="font-head font-extrabold" style="font-size:clamp(30px,6vw,46px);">Yeay…</h2>
+      <div class="final" id="finalState" aria-live="polite">
+        <h2 class="final-heading font-head font-extrabold" id="finalHeading" tabindex="-1" style="font-size:clamp(30px,6vw,46px);">Yeay…</h2>
         <p class="mx-auto mt-3.5" style="font-size:clamp(16px,2.3vw,19px); max-width:52ch; margin-inline:auto; white-space:pre-line;">Makasih ya, kakak cantik. Aku senang banget kamu mau maafin aku.
 Aku janji bakal lebih hati-hati, lebih peka, dan nggak pura-pura ngambek dengan cara yang bikin kamu sedih lagi.</p>
-        <div class="gif-label font-hand mt-6" style="font-size:clamp(20px,3vw,26px); color:var(--text);">Kondisi Adit saat ini</div>
-        <div class="scene scene--lg scene--media mx-auto" id="finalGif" role="img" aria-label="Kondisi Adit saat ini: senang banget dimaafin" style="max-width:340px;">
-          <img class="scene-img" src="mochi-peachcat-cute-cat.gif" alt="Kucing mochi peachcat lucu lagi senyum senang" loading="lazy" />
-        </div>
+        <div class="gif-label font-hand mt-6" style="font-size:clamp(20px,3vw,26px); color:var(--text);">Kondisi user saat ini</div>
+         <div class="scene scene--lg scene--media mx-auto" id="finalGif" style="max-width:340px;">
+           <img class="scene-img" src="assets/gifs/mochi-peachcat-cute-cat.gif" alt="Kucing mochi peachcat lucu lagi senyum senang" loading="lazy" width="317" height="283" />
+         </div>
       </div>
 
     </div>
   </div>
 </section>
 
+</main>
+
+<footer class="px-5 py-6 text-center text-xs" style="color:var(--text-soft);">
+  <strong>Apologies Web App</strong> · Privasi: halaman ini tidak mengumpulkan atau melacak data apa pun.
+</footer>
+
 <!-- confetti layer -->
 <div id="confetti-layer" aria-hidden="true"></div>
 
-<!-- script filled in Task 10 -->
-<script>
-/* ============================================================
-   Interactions — reveal, smooth scroll, chat, thoughts,
-   loading bar, stars/hearts, runaway button, balloon pop,
-   forgiveness climax + confetti.
-   Ported verbatim from reference/index.html (l. 714–1032).
-   ============================================================ */
-(function(){
-  "use strict";
-  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---------- helpers ---------- */
-  function $(s, c){ return (c||document).querySelector(s); }
-  function $all(s, c){ return Array.prototype.slice.call((c||document).querySelectorAll(s)); }
-  function heartSVG(color){
-    return '<svg viewBox="0 0 24 24" width="100%" height="100%"><path fill="'+color+'" d="M12 21s-7.5-4.9-10-9.3C.4 8.4 2 5 5.2 5c2 0 3.3 1.1 4 2.2.7-1.1 2-2.2 4-2.2 3.2 0 4.8 3.4 3.2 6.7C19 16.1 12 21 12 21z"/></svg>';
-  }
-  function scrollToSel(sel){
-    var el = $(sel);
-    if(!el) return;
-    var top = el.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop);
-    window.scrollTo({ top: top, behavior: reduceMotion ? 'auto' : 'smooth' });
-  }
-
-  /* ---------- reveal on scroll ---------- */
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        e.target.classList.add('in');
-        if(e.target.id === 's2' && !e.target.dataset.played){ e.target.dataset.played='1'; playChat(); }
-        if(e.target.id === 's4' && !e.target.dataset.played){ e.target.dataset.played='1'; playThoughts(); }
-        if(e.target.id === 's5' && !e.target.dataset.played){ e.target.dataset.played='1'; playLoading(); }
-      }
-    });
-  }, { threshold: 0.25 });
-  $all('section').forEach(function(s){ io.observe(s); });
-  $all('.reveal').forEach(function(el){ io.observe(el); });
-
-  /* ---------- CTA smooth scroll ---------- */
-  $all('[data-scroll]').forEach(function(b){
-    b.addEventListener('click', function(){ scrollToSel(b.getAttribute('data-scroll')); });
-  });
-
-  /* ---------- SECTION 1 & 6 floating hearts ---------- */
-  function seedHearts(layerId, count, colors){
-    var layer = document.getElementById(layerId); if(!layer) return;
-    for(var i=0;i<count;i++){
-      var s = document.createElement('span');
-      s.className = 'heart-float';
-      var size = 12 + Math.random()*16;
-      s.style.width = size+'px'; s.style.height = size+'px';
-      s.style.left = (Math.random()*100)+'%';
-      s.style.animationDuration = (7 + Math.random()*7)+'s';
-      s.style.animationDelay = (-Math.random()*10)+'s';
-      var c = colors[i % colors.length];
-      s.innerHTML = heartSVG(c);
-      layer.appendChild(s);
-    }
-  }
-  seedHearts('hearts-s1', 8, ['#FF8FAB','#FFD6E0','#B388EB','#FF5C8A']);
-  seedHearts('hearts-s6', 10, ['#FF5C8A','#FFFFFF','#FFD6E0','#FF8FAB']);
-
-  /* ---------- SECTION 2 chat sequence ---------- */
-  function playChat(){
-    var stage = $('#chatStage');
-    var lines = [
-      { t:'Aku tadi niatnya bercanda…' },
-      { t:'Aku cuma pura-pura ngambek…' },
-      { t:'Tapi ternyata kamu yang beneran ngambek…' },
-      { t:'Dan aku kalah.', lost:true }
-    ];
-    var i = 0;
-    function typing(on){
-      if(on){ var t=document.createElement('div'); t.className='typing'; t.id='curTyping'; t.innerHTML='<i></i><i></i><i></i>'; stage.appendChild(t); stage.scrollTop = stage.scrollHeight; }
-      else { var ex=$('#curTyping'); if(ex) ex.remove(); }
-    }
-    function next(){
-      if(i >= lines.length){ var s=document.createElement('div'); s.className='sorry'; s.textContent='Maaf ya…'; stage.appendChild(s); return; }
-      typing(true);
-      setTimeout(function(){
-        typing(false);
-        var b=document.createElement('div');
-        b.className = 'bubble' + (lines[i].lost ? ' lost' : '');
-        b.textContent = lines[i].t;
-        stage.appendChild(b);
-        stage.scrollTop = stage.scrollHeight;
-        i++; setTimeout(next, 650);
-      }, reduceMotion ? 200 : 850);
-    }
-    next();
-  }
-
-  /* ---------- SECTION 4 thoughts stagger ---------- */
-  function playThoughts(){
-    var ts = $all('#s4 .thought');
-    ts.forEach(function(t, idx){
-      setTimeout(function(){ t.classList.add('in'); }, reduceMotion ? 60 : 700*idx + 300);
-    });
-  }
-
-  /* ---------- SECTION 5 loading bar ---------- */
-  function playLoading(){
-    var bar = $('#progressBar'), pct = $('#progressPct'), status = $('#progressStatus'), done = $('#doneTag');
-    var statuses = [
-      'menyiapkan permintaan maaf…',
-      'merangkai kata-kata yang jujur…',
-      'menimbang rasa salah…',
-      'mencari cara biar kamu senyum…',
-      'mengetik dengan tulus…'
-    ];
-    var p = 0, dur = reduceMotion ? 600 : 2300, start = null;
-    function step(ts){
-      if(!start) start = ts;
-      var k = Math.min(1, (ts - start)/dur);
-      var eased = 1 - Math.pow(1 - k, 2);
-      p = Math.round(eased*100);
-      bar.style.width = p + '%';
-      pct.textContent = p + '%';
-      status.textContent = statuses[Math.min(statuses.length-1, Math.floor(eased*statuses.length))];
-      if(k < 1){ requestAnimationFrame(step); }
-      else { status.textContent='Status: masih berharap dimaafin kakak cantik'; done.classList.add('show'); }
-    }
-    requestAnimationFrame(step);
-  }
-
-  /* ---------- SECTION 4 stars ---------- */
-  (function(){
-    var layer = $('#starsLayer'); if(!layer) return;
-    var n = reduceMotion ? 18 : 46;
-    for(var i=0;i<n;i++){
-      var st = document.createElement('span');
-      st.className = 'star' + (Math.random()>0.8 ? ' big':'');
-      st.style.left = (Math.random()*100)+'%';
-      st.style.top = (Math.random()*100)+'%';
-      st.style.animationDelay = (-Math.random()*3)+'s';
-      st.style.animationDuration = (2 + Math.random()*3)+'s';
-      layer.appendChild(st);
-    }
-  })();
-
-  /* ---------- Runaway button + balloon pop ---------- */
-  var attempts = 0, popping = false, lastAttemptAt = 0;
-  var ATTEMPT_COOLDOWN = 360, FLEE_RADIUS = 120, ROAM_PAD = 12;
-  var roam = $('#roam'), wrap = $('#ngambekBtn'), face = $('#ngambekFace');
-  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-  function clampPos(x, y){
-    var rw = roam.clientWidth, rh = roam.clientHeight;
-    var bw = wrap.offsetWidth, bh = wrap.offsetHeight;
-    var maxX = Math.max(ROAM_PAD, rw - bw - ROAM_PAD);
-    var maxY = Math.max(ROAM_PAD, rh - bh - ROAM_PAD);
-    return { x: Math.min(Math.max(x, ROAM_PAD), maxX),
-             y: Math.min(Math.max(y, ROAM_PAD), maxY) };
-  }
-  function applyPos(x, y){
-    var rw = roam.clientWidth;
-    wrap.style.transform = 'translate(' + (x - rw/2) + 'px,' + y + 'px)';
-  }
-  function farPoint(px, py){
-    var bw = wrap.offsetWidth, bh = wrap.offsetHeight;
-    var rw = roam.clientWidth, rh = roam.clientHeight;
-    var cs = [
-      {x: ROAM_PAD, y: ROAM_PAD},
-      {x: rw - bw - ROAM_PAD, y: ROAM_PAD},
-      {x: ROAM_PAD, y: rh - bh - ROAM_PAD},
-      {x: rw - bw - ROAM_PAD, y: rh - bh - ROAM_PAD},
-      {x: (rw - bw)/2, y: (rh - bh)/2}
-    ].map(function(c){ return clampPos(c.x, c.y); });
-    var best = cs[0], bd = -1;
-    cs.forEach(function(c){
-      var d = Math.hypot((c.x + bw/2) - (px||0), (c.y + bh/2) - (py||0));
-      if(d > bd){ bd = d; best = c; }
-    });
-    return best;
-  }
-  function placeInitial(){
-    wrap.style.transition = 'none';
-    var p = clampPos((roam.clientWidth - wrap.offsetWidth)/2, ROAM_PAD);
-    applyPos(p.x, p.y);
-    void wrap.offsetWidth;
-    wrap.style.transition = '';
-  }
-  function tryFlee(px, py){
-    if(popping) return;
-    var now = performance.now();
-    if(now - lastAttemptAt < ATTEMPT_COOLDOWN) return;
-    lastAttemptAt = now;
-    attempts++;
-    if(attempts > 5){ popBalloon(); return; }
-    var p = farPoint(px, py);
-    applyPos(p.x, p.y);
-  }
-
-  if(finePointer && !reduceMotion){
-    roam.addEventListener('pointermove', function(ev){
-      if(popping) return;
-      var r = roam.getBoundingClientRect();
-      var wr = wrap.getBoundingClientRect();
-      var bx = wr.left - r.left + wr.width/2, by = wr.top - r.top + wr.height/2;
-      if(Math.hypot((ev.clientX - r.left) - bx, (ev.clientY - r.top) - by) < FLEE_RADIUS){
-        tryFlee(ev.clientX - r.left, ev.clientY - r.top);
-      }
-    });
-  }
-  wrap.addEventListener('pointerdown', function(ev){
-    var r = roam.getBoundingClientRect();
-    tryFlee(ev.clientX - r.left, ev.clientY - r.top);
-  });
-  wrap.addEventListener('click', function(){ tryFlee(); });
-
-  function popBalloon(){
-    popping = true;
-    face.classList.add('popping');
-    face.addEventListener('animationend', function(){
-      face.style.visibility = 'hidden';
-      spawnBurst();
-      $('#funnyMsg').classList.add('show');
-    }, { once:true });
-    setTimeout(function(){
-      face.classList.remove('popping');
-      face.style.visibility = '';
-      attempts = 0; popping = false; lastAttemptAt = 0;
-      $('#funnyMsg').classList.remove('show');
-      placeInitial();
-    }, 3600);
-  }
-  function spawnBurst(){
-    var colors = ['#FF5C8A','#FF8FAB','#FFB3C6','#B388EB','#FFD6E0'];
-    var rect = wrap.getBoundingClientRect();
-    var cx = rect.left + rect.width/2, cy = rect.top + rect.height/2;
-    var shard = '<svg viewBox="0 0 10 10"><path d="M1 1 Q7 0 8 5 Q9 9 3 9 Q0 6 1 1 Z"/></svg>';
-    var flash = document.createElement('span'); flash.className='pop-flash';
-    flash.style.left = cx+'px'; flash.style.top = cy+'px';
-    document.body.appendChild(flash);
-    setTimeout(function(){ flash.remove(); }, 400);
-    var n = 20;
-    for(var i=0;i<n;i++){
-      var p = document.createElement('span'); p.className='shard';
-      p.innerHTML = shard;
-      p.querySelector('path').setAttribute('fill', colors[i % colors.length]);
-      p.style.left = cx+'px'; p.style.top = cy+'px';
-      var ang = (Math.PI*2*i)/n + (Math.random()-0.5)*0.5;
-      var dist = 52 + Math.random()*72;
-      p.style.setProperty('--bx', (Math.cos(ang)*dist)+'px');
-      p.style.setProperty('--by', (Math.sin(ang)*dist)+'px');
-      p.style.setProperty('--rot', (Math.random()*540-270)+'deg');
-      p.style.animationDuration = (0.6 + Math.random()*0.35)+'s';
-      document.body.appendChild(p);
-      (function(el){ setTimeout(function(){ el.remove(); }, 1000); })(p);
-    }
-  }
-
-  placeInitial();
-  window.addEventListener('resize', function(){ if(!popping) placeInitial(); });
-
-  /* ---------- Forgiveness climax ---------- */
-  $('#forgiveBtn').addEventListener('click', function(){
-    var q = $('#qState'), f = $('#finalState');
-    q.style.transition = 'opacity .5s ease, transform .5s ease';
-    q.style.opacity = '0'; q.style.transform = 'scale(.96)';
-    setTimeout(function(){
-      q.style.display = 'none';
-      f.classList.add('show');
-      fireConfetti();
-      scrollToSel('#s6');
-    }, 480);
-  });
-
-  function fireConfetti(){
-    var layer = $('#confetti-layer');
-    var colors = ['#FF8FAB','#FF5C8A','#B388EB','#FFD6E0','#FFB3C6','#FFFFFF'];
-    var n = reduceMotion ? 18 : 70;
-    for(var i=0;i<n;i++){
-      var h = document.createElement('span'); h.className='confetti-heart';
-      var size = 9 + Math.random()*15;
-      h.style.width = size+'px'; h.style.height = size+'px';
-      h.style.left = (5 + Math.random()*90)+'%';
-      h.style.top = (-10 - Math.random()*15)+'%';
-      h.style.setProperty('--dx', ((Math.random()-0.5)*240)+'px');
-      h.style.setProperty('--rot', (Math.random()*720-360)+'deg');
-      h.style.animationDuration = (2.6 + Math.random()*2.6)+'s';
-      h.style.animationDelay = (Math.random()*0.5)+'s';
-      h.innerHTML = heartSVG(colors[i%colors.length]);
-      layer.appendChild(h);
-      (function(el, d){ setTimeout(function(){ el.remove(); }, (d+5000)); })(h, Math.random()*500);
-    }
-  }
-
-  /* ---------- scroll progress bar ---------- */
-  var progressBar = document.getElementById('scroll-progress');
-  if(progressBar){
-    var ticking = false;
-    function updateProgress(){
-      var h = document.documentElement;
-      var max = (h.scrollHeight - h.clientHeight) || 1;
-      var p = Math.min(1, Math.max(0, (h.scrollTop || document.body.scrollTop) / max));
-      progressBar.style.transform = 'scaleX(' + p + ')';
-      ticking = false;
-    }
-    function onScroll(){ if(!ticking){ window.requestAnimationFrame(updateProgress); ticking = true; } }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    updateProgress();
-  }
-
-  window.addEventListener('load', function(){
-    $all('#s1 .reveal').forEach(function(el){ el.classList.add('in'); });
-  });
-})();
-</script>
 </body>
 </html>
