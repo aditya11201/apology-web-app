@@ -9,3 +9,9 @@
 
 # Playwright QA artifacts
 .playwright-mcp/
+
+# Build/cache/dependencies
+.worktrees/
+.vite/
+.tmp/
+node_modules/
